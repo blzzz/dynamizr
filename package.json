@@ -1,0 +1,36 @@
+{
+  "name": "dynamizr",
+  "version": "0.1.0",
+  "authors": [
+    "Balz Rittmeyer <balz.rittmeyer@mitlinks.ch>"
+  ],
+  "description": "dynamizr is a set of helpers that let you load and initialize specific page content dynamically",
+  "main": "./dist/main.js",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "dynamic",
+    "sections",
+    "run-time",
+    "module",
+    "loader",
+    "frontend",
+    "engine",
+    "backbone"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "coffee-script": "1.7.1"
+  },
+  "scrips": {
+    "build": "uglifyjs src/main.js --mangle -o main-min.js"
+  }
+}
