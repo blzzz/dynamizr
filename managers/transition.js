@@ -3,8 +3,8 @@ define([
 	'backbone',
 	'underscore',
 	'core/vendor',
-	'core/transition'
-], function( $, Backbone, _, vendor, Orchestra ){
+	'prototypes/transition'
+], function( $, Backbone, _, vendor, Transition ){
 	var undef;
 	var TransitionManager = {
 	    
@@ -13,10 +13,9 @@ define([
         playFilter:[],
         playSoloTransition: false,
 
-        config: function( dynamicSections, contentIndicator ){
+        config: function( dynamicSections ){
 
             this.dynamicSections = dynamicSections;
-        	this.contentIndicator = contentIndicator;
         	return this;
         },
 
@@ -43,7 +42,7 @@ define([
 
         	// create transition instances
             var opts
-              , orchestraObj
+              , transitionObj
               , transition
               ;
             _.each(this.dynamicSections, function(section, sectionSelector){
@@ -52,8 +51,8 @@ define([
                 opts.selector = sectionSelector;
                 opts.el = $(sectionSelector);
                 
-                orchestraObj = section.orchestra || Orchestra;
-                transition = new orchestraObj(opts);
+                transitionObj = section.transition || Transition;
+                transition = new transitionObj(opts);
                 transition.triggerDone = function( skip ){
                 	if( skip == true ){
                 		this.$el.trigger( 'transitionSkip' );
@@ -144,7 +143,6 @@ define([
 
 
             // check play mode of all transitions 
-            var contentIndicator = this.contentIndicator;
             this.foreachTransition( function( inst, selector){
                 
                 // when this transition has been played, trigger done event
@@ -157,20 +155,21 @@ define([
                   , $fromContent              
                   , $toContent = quedPage.getSectionBlock(selector)
                   , upcomingHtml = $toContent.html()
-                  , hasUpcomingContent = $toContent.is( contentIndicator )
                   , isValid = !condition ? true : condition.call( inst, isInitial )
                   ;
 
                 // prevent transition if upcoming content is empty or identical
                 if( !isInitial ){
                     $fromContent = currentPage.getSectionBlock(selector);
-                    hadContent = $fromContent.is( contentIndicator );
+                    //hadContent = $fromContent.is( contentIndicator );
                 }
-                
+
                 // evaluate if transition is playable and what transition action has to be performed
-                var doTransition = (hasUpcomingContent && isValid) || forceTransition;
+                var doTransition = isValid || forceTransition;
                 if( !doTransition ){
-                	quedPage.setSectionBlock( selector, $fromContent, true );
+                    if( $fromContent ){
+                       quedPage.setSectionBlock( selector, $fromContent, true );
+                    }
                 	inst.triggerDone( true );
                 	return;
                 }   
@@ -184,7 +183,7 @@ define([
                         inst.soloMode = true;
                         this.playSoloTransition = true;
                     }
-                }else if( hasUpcomingContent || inst.forceTransition || inst.avoidOutro ){                        
+                }else if( inst.forceTransition || inst.avoidOutro ){                        
                     upcomingAction = 'playTransition';
                 }else{
                     upcomingAction = 'playOutro';
