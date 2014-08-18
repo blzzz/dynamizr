@@ -6,6 +6,9 @@ define([
 ],
 function($, _, Backbone, vendor ) {
     
+    var subdir = 'example/'; 
+    var root = '/dynamizr/' + subdir;
+
     var website = /** @lends Website */{
         
         /**
@@ -35,17 +38,11 @@ function($, _, Backbone, vendor ) {
             
         },
         
-        // private vars
-        router: undef,
-        frontend: undef,
-        loadingOverlay: undef, // die Ladeanimation ist so global gespeichert und kann über das globale website Objekt von überall her zugegriffen werden
-        imagePreloadSelector: 'img:not(.dont-preload)',
-
         /**
          * Root-Pfad unter welchem die Webseite läuft
          * @type {string}
          */
-        root: '/dynamizr/example',
+        root: root,
                 
         /**
          * Zonen mit Bildschirmbreiten für responsive Design
@@ -63,12 +60,7 @@ function($, _, Backbone, vendor ) {
             },
             'desktop_small': {
                 from: 1024,
-                to: 1360
-            },
-            'desktop': {
-                from: 1360
             }
-            
         },
         
        
@@ -81,11 +73,10 @@ function($, _, Backbone, vendor ) {
         frontendModules: {
             
             '#header': {
-                module: 'modules/header',
-                options: {
-
-                }
+                module: subdir + 'modules-fe/header-nav',
+                options: {}
             }
+
         },
         
 
@@ -96,14 +87,20 @@ function($, _, Backbone, vendor ) {
          */
         dynamicSections: {
          
-            'section': {
-                transition:'example/transitions/section',
+            '#main': {
+                transition: subdir + 'transitions/main',
                 options: {
                   speed: 500,
                     avoidOutro:true,
                     condition: function( isInitial ){
                       return true;
                     }
+                }
+            },
+
+            '#header nav': {
+                options: {
+                    speed: 500
                 }
             }
                        
@@ -119,8 +116,8 @@ function($, _, Backbone, vendor ) {
          */
         pageModules: {
            
-            '.fancybox': {
-                module: 'modules/gallery'
+            '.fancybox-gallery': {
+                module: subdir + 'modules-pg/gallery'
             }          
             
         },
@@ -134,10 +131,6 @@ function($, _, Backbone, vendor ) {
             closeEffect: 'elastic'
         },
         
-        /**
-         * Spinning Wheel Eigenschaften: [Dokumentation]{@link http://fgnass.github.io/spin.js/#usage}
-         */
-        spinOptions: {},
         
     };
 

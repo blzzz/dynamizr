@@ -1,0 +1,194 @@
+@charset 'UTF-8';
+
+
+/** CLEAR FIX **/
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+ 
+.clearfix {
+    display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+    display: block;
+}
+ 
+* html .clearfix {
+    height: 1%;
+}
+
+
+/** GENERAL TAGS **/
+
+* {
+    
+    margin: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+
+html, body {    
+    min-height: 100%;
+    height: 100%;
+}
+html {
+    overflow-y: scroll; 
+    overflow-x: hidden;
+}   
+body {
+    background:#EEE;
+}
+body, input, textarea {
+    font-family: 'Helvetica', sans-serif;
+    font-weight:normal;
+    font-size: 12pt;
+    line-height: 1.5;   
+    /* background: #DDD; */
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 18pt;
+    line-height: 1;
+    padding: 0.5em;
+    margin:0;
+    font-weight: bold;
+}
+h2 {
+    font-size: 16pt;
+}
+h3 {
+    font-size: 14pt;
+}
+h4, h5, h6 {
+    font-size: 13pt;
+}
+nav ul {
+    display:table;
+    table-layout:fixed;
+    width: 100%;
+}
+nav ul li {
+    display:table-cell;
+    vertical-align: middle;
+}
+nav ul li a{
+    text-align:center;
+    display:block;
+    white-space:nowrap;
+    color: #000;
+    font-size: 36pt;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: left;
+}
+a {
+    color: firebrick;
+    text-decoration:none;
+}
+a:hover {
+    text-decoration:underline;
+}
+p {
+    margin: 0 0 1em;
+    padding: 0.5em;
+}
+
+/** GENERAL WRAPPERS **/
+
+#wrapper {
+    min-height: 100%;
+    height: 100%;   
+    background: #FFF; 
+}
+#wrapper, #footer
+{
+    position: relative;
+    width: 1000px;
+    margin: 0 auto;
+}
+#header {
+    padding: 1.5em 1em 1em;
+    height: 114px;
+}
+#container {
+    width: 100%;
+    min-height: 100%;
+}
+#main {
+    width: 700px;
+    float: left;
+    position: relative;
+}
+#left {
+    width: 300px;
+    background:#999;
+    color: #FFF;
+    float: right;
+    margin: 50px 0 0;
+    position: relative;
+}
+#main .inside, #left .inside {
+    padding: 1em;
+}
+#loading-indicator {    
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background:rgba(0,0,0,0.8);
+    width:100%;
+    height:100%;
+    z-index: 1;
+}
+
+
+/** STICKY FOOTER **/
+    
+#wrapper {
+    margin-bottom: -200px; /* is the negative value of the footer's height */
+}
+#wrapper .push, #footer {
+    height: 200px; /* must be the same height as .footer */
+}
+#footer {
+    background: #CCC;
+    text-align:center;
+    padding:2em;
+}
+
+/** GENERAL CLASSES **/
+
+.invisible {
+    display: none;
+}
+
+.loading,
+.entering {
+    display: none;
+}
+
+.cached {
+    display: none !important;
+}
+
+.dynamic-section-block {
+    position: absolute;
+}
+
+.transit {
+    display:none;
+}
+
+.unload {
+}
+.active {
+    z-index:1;
+}
