@@ -1,7 +1,7 @@
 define([
 	'prototypes/module'
-],function( Modules ){
-	return Modules.extend({
+],function( Module ){
+	return Module.extend({
 
 		events: {
 			'click li':'sayHi'

@@ -2,7 +2,7 @@ define([
     'jquery',
     'website',
     'backbone',
-    'spin-js'
+    'spin'
 ],
 
 function($, website, Backbone, Spinner) {

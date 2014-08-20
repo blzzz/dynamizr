@@ -1,11 +1,12 @@
 define([
+    'require',
     'jquery',
     'website',
     'backbone',
     'core/vendor'
 ],
 
-function($, website, Backbone, vendor) {
+function(require, $, website, Backbone, vendor) {
     
     return Backbone.View.extend(
     /** @lends ModuleLoader.prototype */

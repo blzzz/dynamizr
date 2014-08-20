@@ -5,9 +5,10 @@ define([
     'core/vendor'
 ],
 function($, _, Backbone, vendor ) {
-    
-    var subdir = 'example/'; 
+
+    var subdir = typeof SUBDIRPATH === 'undefined' ? '' : SUBDIRPATH; 
     var root = '/dynamizr/' + subdir;
+
 
     var website = /** @lends Website */{
         

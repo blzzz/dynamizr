@@ -1,10 +1,11 @@
 define([
+    'require',
 	'jquery',
 	'backbone',
 	'underscore',
 	'core/vendor',
 	'prototypes/transition'
-], function( $, Backbone, _, vendor, Transition ){
+], function( require, $, Backbone, _, vendor, Transition ){
 	var undef;
 	var TransitionManager = {
 	    

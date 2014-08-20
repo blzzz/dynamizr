@@ -21,7 +21,6 @@ require([
 function( website, Frontend, vendor, WidthZoneManager, TransitionManger, LoadingIndicator, TrackingManager ) {
 
     
-
     /**  CONFIGURE WEBSITES MANAGERS  **/
     
     website.WidthManager =          WidthZoneManager.config( website.widthZones );
@@ -40,6 +39,7 @@ function( website, Frontend, vendor, WidthZoneManager, TransitionManger, Loading
             pushState: true
         });
         
+
         website.TransitionManager.load(function(){
             website.frontend.run();
             website.WidthManager.triggerReadyEvent();            

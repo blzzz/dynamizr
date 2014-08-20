@@ -6,7 +6,7 @@ define([
     'core/moduleloader',
     'core/vendor',
 
-    'waitforimages'
+    'waitForImages'
 ],
 
 function($, website, Backbone, ModuleLoader, vendor) {

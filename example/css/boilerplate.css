@@ -79,6 +79,7 @@ nav ul {
 nav ul li {
     display:table-cell;
     vertical-align: middle;
+    text-shadow: 0px 0px 8px #FFF;
 }
 nav ul li a{
     text-align:center;
@@ -182,7 +183,9 @@ p {
 .dynamic-section-block {
     position: absolute;
 }
-
+.dynamic-section-block.active {
+    position: static;
+}
 .transit {
     display:none;
 }
@@ -191,4 +194,15 @@ p {
 }
 .active {
     z-index:1;
+}
+
+/** MODULES **/
+.fancybox-gallery {
+    background: yellow;
+    float: left;
+    width:100%;
+}
+.fancybox-gallery li {
+    float: left;
+    padding:1em;
 }

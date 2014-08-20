@@ -1,54 +1,47 @@
+var SUBDIRPATH = 'example/';
+
 // Set the require.js configuration for your application.
 require.config({
-  
   baseUrl: '../',
-
-  deps: [ 'main'],
-
+  deps: [
+    'main'
+  ],
   paths: {
-    
-    // points to the run-time website conifiguration object
-    'website':'example/website',
-    
-    // points to the main application script 
-    'main':'example/main',
-
-    // points to bower components
-    'noconflict': 'core/noconflict',
-    'jquery': 'bower_components/jquery/dist/jquery.min',
-    'backbone': 'bower_components/backbone/backbone',
-    'underscore': 'bower_components/underscore/underscore',
-    'spin-js': 'bower_components/spin.js/spin',
-    'waitforimages': 'bower_components/waitForImages/dist/jquery.waitforimages.min',
-
+    website: 'example/website',
+    main: 'example/main',
+    module: 'prototypes/module',
+    transition: 'prototypes/transition',
+    noconflict: 'core/noconflict',
+    backbone: 'bower_components/backbone/backbone',
+    jquery: 'bower_components/jquery/dist/jquery',
+    spin: 'bower_components/spin.js/spin',
+    underscore: 'bower_components/underscore/underscore',
+    waitForImages: 'bower_components/waitForImages/dist/jquery.waitforimages',
+    fancybox: 'bower_components/fancybox/source/jquery.fancybox.pack'
   },
-
   shim: {
-    
-    // framework dependencies
-    'backbone': {
-      'deps': ['jquery','underscore']
+    backbone: {
+      deps: [
+        'jquery',
+        'underscore'
+      ]
     },
-
-    // plugin dependencies
-    'waitforimages': {
-      'deps': ['jquery']
+    waitforimages: {
+      deps: [
+        'jquery'
+      ]
     },
     'spin-js': {
-      'deps': ['jquery']
+      deps: [
+        'jquery'
+      ]
     }
-
   },
-  
   map: {
-      // '*': {
-      //   'jquery': 'noconflict'
-      // },
-      // 'noconflict': {
-      //   'jquery': 'jquery'
-      // }
-  },
-  
-  urlArgs: 't='+(new Date).getTime()
 
+  },
+  urlArgs: 't=1408526801832',
+  packages: [
+
+  ]
 });
