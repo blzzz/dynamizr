@@ -2,21 +2,21 @@
   "name": "dynamizr",
   "version": "0.1.0",
   "authors": [
-    "Balz Rittmeyer <balz.rittmeyer@gmail.com>"
+    "Ruedi Lüthi <ruedi.luethi@i-conet.ch>",
+    "Balz Rittmeyer <balz.rittmeyer@gmail.com>",
   ],
-  "description": "dynamizr is a set of helpers that let you load and initialize specific page content dynamically",
+  "description": "dynamizr is a website bolierplate focussing on the dynamic loading of markup content and code modules",
   "main": "./dist/main.js",
   "moduleType": [
     "amd"
   ],
   "keywords": [
-    "dynamic",
-    "sections",
-    "run-time",
-    "module",
-    "loader",
     "frontend",
-    "engine",
+    "dynamicSections",
+    "frontendModules",
+    "pageModules",
+    "transitions",
+    "boilerplate",
     "backbone"
   ],
   "license": "MIT",
