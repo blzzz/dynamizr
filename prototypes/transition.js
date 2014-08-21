@@ -74,7 +74,6 @@ function($, website, Backbone) {
                 });
                 
             }else{
-                
                 self.$toContent.hide();
                 self.$fromContent.fadeOut(self.speed, function(){
                     self.$toContent.fadeIn(self.speed, function(){
@@ -96,6 +95,12 @@ function($, website, Backbone) {
                 
             }else{
                 
+                self.$toContent.show();
+                self.$el.css({
+                    height: self.$fromContent.height()
+                }).animate({
+                    height: self.$toContent.height()
+                },self.speed);
                 self.$fromContent.fadeOut(self.speed);
                 self.$toContent.hide();
                 self.$toContent.fadeIn(self.speed, function(){

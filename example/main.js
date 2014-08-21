@@ -24,7 +24,7 @@ function( website, Frontend, vendor, WidthZoneManager, TransitionManger, Loading
     /**  CONFIGURE WEBSITES MANAGERS  **/
     
     website.WidthManager =          WidthZoneManager.config( website.widthZones );
-    website.TransitionManager =     TransitionManger.config( website.dynamicSections, ':has(.inside)' );
+    website.TransitionManager =     TransitionManger.config( website.dynamicSections, ':has(*)' );
     website.LoadingIndicator =      LoadingIndicator.config( '#loading-indicator', website.spinOptions);
     website.TrackingManager =       TrackingManager.config( 'UA-XXXXXXXX' );
 
@@ -52,7 +52,7 @@ function( website, Frontend, vendor, WidthZoneManager, TransitionManger, Loading
 
         website.LoadingIndicator.start();  
         website.frontend.fetchPage(route.path);
-
+        
     });
 
 
@@ -92,7 +92,7 @@ function( website, Frontend, vendor, WidthZoneManager, TransitionManger, Loading
 
         }
 
-        // show body content, prevent FOUC
+        // show body content, prevent intro flash
         if( prevPage == undef ){
             $('body').css({ visibility:'visible' });                        
         }
@@ -126,6 +126,9 @@ function( website, Frontend, vendor, WidthZoneManager, TransitionManger, Loading
     });
 
     /*** initialize website by waiting for dom ready event ***/
-    website.initialize();
+    $(document).ready(function(){
+        vendor.log_config( website.logConfigOptions );
+        website.trigger('domReady',website);
+    });
 
 });

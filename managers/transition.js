@@ -14,9 +14,9 @@ define([
         playFilter:[],
         playSoloTransition: false,
 
-        config: function( dynamicSections ){
-
+        config: function( dynamicSections, contentIndicator ){
             this.dynamicSections = dynamicSections;
+            this.contentIndicator = contentIndicator;
         	return this;
         },
 
@@ -157,16 +157,17 @@ define([
                   , $toContent = quedPage.getSectionBlock(selector)
                   , upcomingHtml = $toContent.html()
                   , isValid = !condition ? true : condition.call( inst, isInitial )
+                  , hasUpcomingContent = $toContent.is( this.contentIndicator )
                   ;
 
                 // prevent transition if upcoming content is empty or identical
                 if( !isInitial ){
                     $fromContent = currentPage.getSectionBlock(selector);
-                    //hadContent = $fromContent.is( contentIndicator );
+                    hadContent = $fromContent.is( this.contentIndicator );
                 }
 
                 // evaluate if transition is playable and what transition action has to be performed
-                var doTransition = isValid || forceTransition;
+                var doTransition = (hasUpcomingContent && isValid) || forceTransition;
                 if( !doTransition ){
                     if( $fromContent ){
                        quedPage.setSectionBlock( selector, $fromContent, true );
@@ -184,7 +185,7 @@ define([
                         inst.soloMode = true;
                         this.playSoloTransition = true;
                     }
-                }else if( inst.forceTransition || inst.avoidOutro ){                        
+                }else if( hasUpcomingContent || inst.forceTransition || inst.avoidOutro ){                        
                     upcomingAction = 'playTransition';
                 }else{
                     upcomingAction = 'playOutro';

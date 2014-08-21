@@ -6,30 +6,14 @@ define([
 ],
 function($, _, Backbone, vendor ) {
 
+
     var subdir = typeof SUBDIRPATH === 'undefined' ? '' : SUBDIRPATH; 
     var root = '/dynamizr/' + subdir;
 
 
     var website = /** @lends Website */{
-        
-        /**
-         * @class Globales Objekt welches statische Eigenschaften zur Webseite enthält
-         * @constructs
-         */
-       initialize: function(){
-          
-          var self = this;
-          
-          // set log configuration
-          vendor.log_config( self.logConfigOptions );
-          
-          // trigger dom ready event
-          $(document).ready(function(){
-              self.trigger('domReady',self);
-          });
-          
-        },
-        
+       
+
         logConfigOptions: {
             
             enableLogs: true,
@@ -71,13 +55,11 @@ function($, _, Backbone, vendor ) {
          * @property {string} module - Modul Name mit Pfad
          * @property {string} options - Zusätzliche Optionen die dem Modul beim Instanzieren an den Konstruktor übergeben werden
          */
-        frontendModules: {
-            
+        frontendModules: {            
             '#header': {
                 module: subdir + 'modules-fe/header-nav',
                 options: {}
             }
-
         },
         
 
@@ -86,8 +68,7 @@ function($, _, Backbone, vendor ) {
          * Sektionen als Array mit jQuery Selektoren welche bei einem Seitenwechsel mit den neuen Inhalten geladen werden
          * @type {string[]}
          */
-        dynamicSections: {
-         
+        dynamicSections: {         
             '#main': {
                 transition: subdir + 'transitions/main',
                 options: {
@@ -98,13 +79,11 @@ function($, _, Backbone, vendor ) {
                     }
                 }
             },
-
             '#header nav': {
                 options: {
                     speed: 500
                 }
-            }
-                       
+            }                       
         },
         
         
@@ -115,12 +94,10 @@ function($, _, Backbone, vendor ) {
          * @property {string} module - Modul Name mit Pfad
          * @property {string} options - Zusätzliche Optionen die dem Modul beim Instanzieren an den Konstruktor übergeben werden
          */
-        pageModules: {
-           
+        pageModules: {           
             '.fancybox-gallery': {
                 module: subdir + 'modules-pg/gallery'
-            }          
-            
+            } 
         },
         
         
@@ -137,8 +114,7 @@ function($, _, Backbone, vendor ) {
 
 
     // Mix Backbone.Events, modules, and layout management into the app object.
-    window.website = _.extend(website, Backbone.Events);
-    return window.website;
+    return _.extend(website, Backbone.Events);
    
    
 });

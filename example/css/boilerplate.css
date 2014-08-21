@@ -27,8 +27,7 @@ html[xmlns] .clearfix {
 
 /** GENERAL TAGS **/
 
-* {
-    
+* {    
     margin: 0;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -36,17 +35,13 @@ html[xmlns] .clearfix {
     -ms-box-sizing: border-box;
     -o-box-sizing: border-box;
 }
-
-html, body {    
-    min-height: 100%;
-    height: 100%;
-}
 html {
     overflow-y: scroll; 
     overflow-x: hidden;
 }   
 body {
-    background:#EEE;
+    background:#FFF;
+    visibility: hidden; /* will be switched as soon as page is ready */
 }
 body, input, textarea {
     font-family: 'Helvetica', sans-serif;
@@ -71,10 +66,14 @@ h3 {
 h4, h5, h6 {
     font-size: 13pt;
 }
+nav {
+    background:transparent;
+}
 nav ul {
     display:table;
     table-layout:fixed;
     width: 100%;
+    background:transparent;
 }
 nav ul li {
     display:table-cell;
@@ -103,42 +102,80 @@ p {
     padding: 0.5em;
 }
 
-/** GENERAL WRAPPERS **/
 
+
+/** CSS STICKY FOOTER **/
+
+html, body {    
+    min-height: 100%;
+    height: 100%;
+}
+/*Opera Fix*/
+body:before {
+    content:"";
+    height:100%;
+    float:left;
+    width:0;
+    margin-top:-32767px;/
+}
 #wrapper {
     min-height: 100%;
-    height: 100%;   
-    background: #FFF; 
+    position: relative; 
 }
-#wrapper, #footer
-{
-    position: relative;
+#wrapper-content {
+    overflow: visible;
+    padding-bottom: 200px; /* value of footer height */
+}
+#footer {
+    position: relative; 
+    height: 200px;
+    margin-top: -200px; /* negative value of footer height */
+    clear:both;
+}
+
+
+/** GENERAL WRAPPERS **/
+
+#header nav,
+#wrapper-content,
+#footer-content {
+    clear:both;
     width: 1000px;
     margin: 0 auto;
+    position: relative;
 }
 #header {
     padding: 1.5em 1em 1em;
     height: 114px;
-}
-#container {
-    width: 100%;
-    min-height: 100%;
+    background: #DDD;
 }
 #main {
     width: 700px;
-    float: left;
     position: relative;
+    float:left;
 }
 #left {
     width: 300px;
     background:#999;
     color: #FFF;
-    float: right;
+    float:right;
     margin: 50px 0 0;
     position: relative;
 }
+#main, #left {
+    margin-bottom: 2em;
+}
 #main .inside, #left .inside {
     padding: 1em;
+}
+#footer {
+    background: #CCC;
+}
+#footer-content {
+    text-align:center;
+    padding:2em;
+    height:100%;
+    background: #DDD;
 }
 #loading-indicator {    
     position: fixed;
@@ -151,50 +188,24 @@ p {
 }
 
 
-/** STICKY FOOTER **/
-    
-#wrapper {
-    margin-bottom: -200px; /* is the negative value of the footer's height */
-}
-#wrapper .push, #footer {
-    height: 200px; /* must be the same height as .footer */
-}
-#footer {
-    background: #CCC;
-    text-align:center;
-    padding:2em;
-}
-
 /** GENERAL CLASSES **/
 
-.invisible {
-    display: none;
-}
-
+.invisible,
 .loading,
-.entering {
+.entering,
+.transit {
     display: none;
 }
-
-.cached {
-    display: none !important;
-}
-
 .dynamic-section-block {
     position: absolute;
+    top:0;
+    left:0;
 }
 .dynamic-section-block.active {
     position: static;
-}
-.transit {
-    display:none;
-}
-
-.unload {
-}
-.active {
     z-index:1;
 }
+
 
 /** MODULES **/
 .fancybox-gallery {

@@ -3,7 +3,8 @@ define([
     'website',
     'backbone',
     'prototypes/module',
-    'fancybox'
+    'fancybox',
+    'css!bower_components/fancybox/source/jquery.fancybox.css'
 ],
 
 function($, website, Backbone, Module) {
@@ -16,6 +17,7 @@ function($, website, Backbone, Module) {
 
         initialize: function(){
             var self = this;
+
         },
         
         open: function(e){

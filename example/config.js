@@ -38,7 +38,9 @@ require.config({
     }
   },
   map: {
-
+    '*': {
+      'css': 'bower_components/require-css/css' // or whatever the path to require-css is
+    }
   },
   urlArgs: 't=1408526801832',
   packages: [

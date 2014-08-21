@@ -499,9 +499,7 @@ function($, website, Backbone, Router, ModuleLoader, Page, vendor) {
         },
    
 
-        /**
-         * entfernt alle section-block wo als cached markiert wurden
-         */
+        
         setActivePage: function( page, sectionsToMigrate ){
             var self = this;
             
