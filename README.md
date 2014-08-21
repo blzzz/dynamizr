@@ -30,8 +30,7 @@ Beside the html files, the __example__ folder contains one build.js file, three 
 - __Module Folders__
     - __modules-fe__: contains example projects *Page Modules* (just one)
     - __modules-pg__: contains example projects *Frontend Modules* (just one)
-    - __transitions__: contains example projects *Transition Modules* (just one)
-    - 
+    - __transitions__: contains example projects *Transition Modules* (just one) 
 - __Assets Folders__
     - __libs__: contains JavaScript libraries which are not that bower-friendly, i.e. require.js
     - __css__: contains cascading stylesheets
